@@ -31,9 +31,13 @@ public class DeleteStudentDemo {
       
       Student myStudent = session.get(Student.class, studentId);
 
-      //delete the student
+      //delete the student object
       System.out.println("Deleting student: " + myStudent );
       session.delete(myStudent);
+      
+      //delete student directly from database without first retrieving it
+      System.out.println("Deleting student with id: 2");
+      session.createQuery("delete from Student where id=2").executeUpdate();
       
       //commit the transaction
       session.getTransaction().commit();
